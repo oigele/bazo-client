@@ -80,9 +80,9 @@ func SendTx(dial string, tx protocol.Transaction, typeID uint8) (err error) {
 	return errors.New(fmt.Sprintf("Sending tx %x failed.", txHash[:8]))
 }
 
-func NonVerifiedTxReq(addressHash [32]byte) (nonVerifiedTxs []*protocol.FundsTx) {
+func NonVerifiedTxReq(address [64]byte) (nonVerifiedTxs []*protocol.FundsTx) {
 	if conn := p2p.Connect(util.Config.MultisigIpport); conn != nil {
-		packet := p2p.BuildPacket(p2p.FUNDSTX_REQ, addressHash[:])
+		packet := p2p.BuildPacket(p2p.FUNDSTX_REQ, address[:])
 		conn.Write(packet)
 
 		header, payload, err := p2p.RcvData_(conn)

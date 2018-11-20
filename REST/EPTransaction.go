@@ -137,8 +137,8 @@ func CreateFundsTxEndpoint(w http.ResponseWriter, req *http.Request) {
 		Amount: uint64(amount),
 		Fee:    uint64(fee),
 		TxCnt:  uint32(txCnt),
-		From:   protocol.SerializeHashContent(fromPub),
-		To:     protocol.SerializeHashContent(toPub),
+		From:   fromPub,
+		To:     toPub,
 	}
 
 	txHash := tx.Hash()

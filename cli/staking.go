@@ -115,7 +115,7 @@ func toggleStaking(args *stakingArgs, logger *log.Logger) error {
 		byte(args.header),
 		uint64(args.fee),
 		args.stakingValue,
-		protocol.SerializeHashContent(accountPubKey),
+		accountPubKey,
 		privKey,
 		commPubKey,
 	)

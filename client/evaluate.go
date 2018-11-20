@@ -25,13 +25,13 @@ func getRelevantBlocks(relevantBlockHeaders []*protocol.Block) (relevantBlocks [
 	return relevantBlocks, nil
 }
 
-func getRelevantBlockHeaders(pubKeyHash [32]byte) (relevantHeadersBeneficiary []*protocol.Block, relevantHeadersConfigBF []*protocol.Block) {
+func getRelevantBlockHeaders(pubKey [64]byte) (relevantHeadersBeneficiary []*protocol.Block, relevantHeadersConfigBF []*protocol.Block) {
 	for _, blockHeader := range blockHeaders {
-		if blockHeader.Beneficiary == pubKeyHash {
+		if blockHeader.Beneficiary == pubKey {
 			relevantHeadersBeneficiary = append(relevantHeadersBeneficiary, blockHeader)
 		}
 
-		if blockHeader.NrConfigTx > 0 || (blockHeader.NrElementsBF > 0 && blockHeader.BloomFilter.Test(pubKeyHash[:])) {
+		if blockHeader.NrConfigTx > 0 || (blockHeader.NrElementsBF > 0 && blockHeader.BloomFilter.Test(pubKey[:])) {
 			relevantHeadersConfigBF = append(relevantHeadersConfigBF, blockHeader)
 		}
 	}
