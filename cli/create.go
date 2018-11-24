@@ -91,5 +91,9 @@ func (args createAccountArgs) ValidateInput() error {
 		return errors.New("argument missing: walletFile")
 	}
 
+	if _, err := os.Stat(args.walletFile); !os.IsNotExist(err) {
+		return errors.New(fmt.Sprintf("invalid argument: wallet at %v already exists", args.walletFile))
+	}
+
 	return nil
 }
