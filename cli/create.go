@@ -1,7 +1,6 @@
 package cli
 
 import (
-	"crypto/ecdsa"
 	"errors"
 	"fmt"
 	"github.com/bazo-blockchain/bazo-miner/crypto"
@@ -55,22 +54,17 @@ func createAccount(args *createAccountArgs, logger *log.Logger) error {
 		return err
 	}
 
-	var newKey *ecdsa.PrivateKey
-	//Write the public key to the given textfile
-	file, err := os.Create(args.walletFile)
+	newKey, err := crypto.ExtractECDSAKeyFromFile(args.walletFile)
 	if err != nil {
 		return err
 	}
+	address := crypto.GetAddressFromPubKey(&newKey.PublicKey)
 
-	tx, newKey, err := protocol.ConstrAccTx(byte(args.header), uint64(args.fee), [64]byte{}, privKey, nil, nil)
+	tx, _, err := protocol.ConstrAccTx(byte(args.header), uint64(args.fee), address, privKey, nil, nil)
 	if err != nil {
 		return err
 	}
-
-	_, err = file.WriteString(string(newKey.X.Text(16)) + "\n")
-	_, err = file.WriteString(string(newKey.Y.Text(16)) + "\n")
-	_, err = file.WriteString(string(newKey.D.Text(16)) + "\n")
-
+	
 	if err != nil {
 		return errors.New(fmt.Sprintf("failed to write key to file %v", args.walletFile))
 	}
