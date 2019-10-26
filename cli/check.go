@@ -2,8 +2,8 @@ package cli
 
 import (
 	"errors"
-	"github.com/bazo-blockchain/bazo-client/client"
-	"github.com/bazo-blockchain/bazo-miner/crypto"
+	"github.com/oigele/bazo-client/client"
+	"github.com/oigele/bazo-miner/crypto"
 	"github.com/urfave/cli"
 	"log"
 	"math/big"

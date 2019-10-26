@@ -2,8 +2,8 @@ package network
 
 import (
 	"encoding/binary"
-	"github.com/bazo-blockchain/bazo-miner/p2p"
-	"github.com/bazo-blockchain/bazo-miner/protocol"
+	"github.com/oigele/bazo-miner/p2p"
+	"github.com/oigele/bazo-miner/protocol"
 	"strconv"
 )
 

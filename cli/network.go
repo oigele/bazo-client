@@ -2,11 +2,11 @@ package cli
 
 import (
 	"errors"
-	"github.com/bazo-blockchain/bazo-client/network"
-	"github.com/bazo-blockchain/bazo-client/util"
-	"github.com/bazo-blockchain/bazo-miner/crypto"
-	"github.com/bazo-blockchain/bazo-miner/p2p"
-	"github.com/bazo-blockchain/bazo-miner/protocol"
+	"github.com/oigele/bazo-client/network"
+	"github.com/oigele/bazo-client/util"
+	"github.com/oigele/bazo-miner/crypto"
+	"github.com/oigele/bazo-miner/p2p"
+	"github.com/oigele/bazo-miner/protocol"
 	"github.com/urfave/cli"
 	"log"
 )

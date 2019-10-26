@@ -1,7 +1,7 @@
 package client
 
 import (
-	"github.com/bazo-blockchain/bazo-client/util"
+	"github.com/oigele/bazo-client/util"
 	"log"
 )
 

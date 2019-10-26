@@ -3,8 +3,8 @@ package client
 import (
 	"errors"
 	"fmt"
-	"github.com/bazo-blockchain/bazo-client/network"
-	"github.com/bazo-blockchain/bazo-miner/protocol"
+	"github.com/oigele/bazo-client/network"
+	"github.com/oigele/bazo-miner/protocol"
 )
 
 //TODO Validate block merkle root.

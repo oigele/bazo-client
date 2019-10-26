@@ -1,8 +1,8 @@
 package cli
 
 import (
-	"github.com/bazo-blockchain/bazo-client/REST"
-	"github.com/bazo-blockchain/bazo-client/client"
+	"github.com/oigele/bazo-client/REST"
+	"github.com/oigele/bazo-client/client"
 	"github.com/urfave/cli"
 )
 

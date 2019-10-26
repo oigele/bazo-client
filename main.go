@@ -1,12 +1,12 @@
 package main
 
 import (
-	"github.com/bazo-blockchain/bazo-client/cli"
-	"github.com/bazo-blockchain/bazo-client/client"
-	"github.com/bazo-blockchain/bazo-client/cstorage"
-	"github.com/bazo-blockchain/bazo-client/network"
-	"github.com/bazo-blockchain/bazo-client/util"
-	"github.com/bazo-blockchain/bazo-miner/p2p"
+	"github.com/oigele/bazo-client/cli"
+	"github.com/oigele/bazo-client/client"
+	"github.com/oigele/bazo-client/cstorage"
+	"github.com/oigele/bazo-client/network"
+	"github.com/oigele/bazo-client/util"
+	"github.com/oigele/bazo-miner/p2p"
 	cli2 "github.com/urfave/cli"
 	"os"
 )

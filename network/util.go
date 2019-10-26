@@ -5,8 +5,8 @@ import (
 	"encoding/binary"
 	"errors"
 	"fmt"
-	"github.com/bazo-blockchain/bazo-client/util"
-	"github.com/bazo-blockchain/bazo-miner/p2p"
+	"github.com/oigele/bazo-client/util"
+	"github.com/oigele/bazo-miner/p2p"
 	"time"
 )
 
