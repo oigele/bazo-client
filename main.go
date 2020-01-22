@@ -28,6 +28,7 @@ func main() {
 	app.Commands = []cli2.Command {
 		cli.GetAccountCommand(logger),
 		cli.GetFundsCommand(logger),
+		cli.GetDataCommand(logger),
 		cli.GetNetworkCommand(logger),
 		cli.GetRestCommand(),
 		cli.GetStakingCommand(logger),
