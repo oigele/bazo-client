@@ -134,7 +134,7 @@ func sendData(args *dataArgs, logger *log.Logger) error {
 
 	tx, err := protocol.ConstrDataTx(
 		byte(args.header),
-		uint64(args.fee),
+		args.fee,
 		uint32(args.txcount),
 		protocol.SerializeHashContent(fromAddress),
 		protocol.SerializeHashContent(toAddress),
@@ -147,7 +147,7 @@ func sendData(args *dataArgs, logger *log.Logger) error {
 		return err
 	}
 
-	if err := network.SendTx(util.Config.BootstrapIpport, tx, p2p.FUNDSTX_BRDCST); err != nil {
+	if err := network.SendTx(util.Config.BootstrapIpport, tx, p2p.DATATX_BRDCST); err != nil {
 		logger.Printf("%v\n", err)
 		return err
 	} else {
