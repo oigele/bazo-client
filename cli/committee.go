@@ -27,7 +27,7 @@ func GetCommitteeCommand(logger *log.Logger) cli.Command {
 			args := &committeeArgs{
 				header: 		c.Int("header"),
 				fee: 			c.Uint64("fee"),
-				walletFile: 	c.String("to"),
+				walletFile: 	c.String("wallet"),
 				committee: 		c.String("committee"),
 				rootWallet:		c.String("rootwallet"),
 			}
@@ -92,11 +92,12 @@ func sendCommittee(args *committeeArgs, logger *log.Logger) error {
 		return err
 	}
 
-	if err := network.SendTx(util.Config.BootstrapIpport, tx, p2p.COMMITTEETX_BRDCST); err != nil {
-		logger.Printf("%v\n", err)
-		return err
-	} else {
-		logger.Printf("Transaction successfully sent to network:\nTxHash: %x%v", tx.Hash(), tx)
+	for _, committee := range util.CommitteesIpPortSlice {
+		if err := network.SendTx(committee, tx, p2p.COMMITTEETX_BRDCST); err != nil {
+			logger.Printf("%v\n", err)
+		} else {
+			logger.Printf("Transaction successfully sent to IpPort:%s\nTxHash: %x%v", committee, tx.Hash(), tx)
+		}
 	}
 
 	return nil

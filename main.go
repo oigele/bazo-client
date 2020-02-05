@@ -16,6 +16,8 @@ func main() {
 	client.InitLogging()
 	logger := util.InitLogger()
 	util.Config = util.LoadConfiguration()
+	util.CommitteesIpPortSlice = util.LoadCommitteesIpPort()
+
 
 	network.Init()
 	cstorage.Init("client.db")

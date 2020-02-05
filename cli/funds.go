@@ -146,11 +146,12 @@ func sendFunds(args *fundsArgs, logger *log.Logger) error {
 		return err
 	}
 
-	if err := network.SendTx(util.Config.BootstrapIpport, tx, p2p.FUNDSTX_BRDCST); err != nil {
-		logger.Printf("%v\n", err)
-		return err
-	} else {
-		logger.Printf("Transaction successfully sent to network:\nTxHash: %x%v", tx.Hash(), tx)
+	for _, committee := range util.CommitteesIpPortSlice {
+		if err := network.SendTx(committee, tx, p2p.FUNDSTX_BRDCST); err != nil {
+			logger.Printf("%v\n", err)
+		} else {
+			logger.Printf("Transaction successfully sent to IpPort:%s\nTxHash: %x%v", committee, tx.Hash(), tx)
+		}
 	}
 
 	return nil
