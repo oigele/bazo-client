@@ -10,9 +10,10 @@ For more information, please check out the [official documentation](https://gith
 Furthermore, the `committees.json` in the root directory of the bazo-client must be properly configured before 
 interacting with the CLI. For each committee node in the system, it must be added to the file such the transactions which are sent can be delivered to all committee members. Therefore, the json file contains a list of all IP Addresses and Ports of the committee members. The following example is the committee file which would be required to run the test case which has been described in the miner's readme file.
 
-Contents of `committee.json`:
+Contents of `committees.json`:
 ```json
 {
+  "committees": [
     {
       "ip": "127.0.0.1",
       "port": "8002"
@@ -21,6 +22,7 @@ Contents of `committee.json`:
       "ip": "127.0.0.1",
       "port": "8003"
     }
+  ]
 }
 ```
 
@@ -223,6 +225,28 @@ Example
 
 ```bash
 bazo-client staking disable --wallet myaccount.txt
+```
+
+### Add Committee Node
+
+
+Create a new commitee account and add it to the network. Save the public-private wallet keypair to a file, along with a committee public-private keypair.
+
+```bash
+bazo-client committee [command options] [arguments...]
+```
+
+Options
+* `--header`: (default: 0) Set header flag
+* `--fee`: (default: 1) Set transaction fee
+* `--rootwallet`: Load root's private key from this file
+* `--wallet`: The name of the wallet file which will be created
+* `--file`: Save the new account's public and private key to this file
+
+Examples
+
+```bash
+bazo-client committee --wallet WalletCommitteeB.txt --committee CommitteeB.txt --rootwallet WalletA.txt
 ```
 
 ### REST 
