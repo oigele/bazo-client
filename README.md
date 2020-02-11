@@ -138,7 +138,7 @@ Options
 * `--header`: (default: 0) Set header flag
 * `--fee`: (default: 1) Set transaction fee
 * `--txcount`: The sender's current transaction counter
-* `--data`: The data to be sent from the sender to the reciüient
+* `--data`: The data to be sent from the sender to the recipient. Due to CLI limitations, the data has to be passed in the form of a string
 * `--from`: The file to load the sender's private key from
 * `--to`: The file to load the recipient's public key from
 * `--toAddress`: Instead of passing the recipient's address by file with `--to`, you can also directly pass the recipient's address with this option
@@ -147,9 +147,9 @@ Options
 Examples
 
 ```bash
-bazo-client funds --from myaccount.txt --to recipient.txt --txcount 0 --data nil
-bazo-client funds --from myaccount.txt --to recipient.txt --txcount 1 --data 100 --multisig myaccount.txt
-bazo-client funds --from myaccount.txt --toAddress b978...<120 byte omitted>...e86ba --txcount 2 --amount 100 --fee 15
+bazo-client data --from myaccount.txt --to recipient.txt --txcount 0 --data HelloWorld
+bazo-client data --from myaccount.txt --to recipient.txt --txcount 1 --data NoData --multisig myaccount.txt
+bazo-client data --from myaccount.txt --toAddress b978...<120 byte omitted>...e86ba --txcount 2 --amount 100 --fee 15
 ```
 
 ### Network
