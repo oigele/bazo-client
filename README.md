@@ -4,29 +4,27 @@ The command line interface for interacting with the Bazo blockchain implemented 
 
 ## Setup Instructions
 
-The programming language Go (developed and tested with version >= 1.9) must be installed, the properties `$GOROOT` and `$GOPATH` must be set. 
+The programming language Go (developed and tested with version >= 1.12.7) must be installed, the properties `$GOROOT` and `$GOPATH` must be set. 
 For more information, please check out the [official documentation](https://github.com/golang/go/wiki/SettingGOPATH).
 
-Furthermore, the `configuration.json` in the root directory of the bazo-client must be properly configured before 
-interacting with the CLI.
+Furthermore, the `committees.json` in the root directory of the bazo-client must be properly configured before 
+interacting with the CLI. For each committee node in the system, it must be added to the file such the transactions which are sent can be delivered to all committee members. Therefore, the json file contains a list of all IP Addresses and Ports of the committee members. The following example is the committee file which would be required to run the test case which has been described in the miner's readme file.
 
-Contents of `configuration.json`:
+Contents of `committee.json`:
 ```json
 {
-  "this_client": {
-    "ip": "127.0.0.1",
-    "port": "8010"
-  },
-  "bootstrap_server": {
-    "ip": "127.0.0.1",
-    "port": "8000"
-  },
-  "multisig_server": {
-    "ip": "127.0.0.1",
-    "port": "8020"
-  }
+    {
+      "ip": "127.0.0.1",
+      "port": "8002"
+    },
+    {
+      "ip": "127.0.0.1",
+      "port": "8003"
+    }
 }
 ```
+
+In the current state of the system, the `configurations.json` file should not be necessary anymore.
 
 ## Getting Started
 
@@ -125,6 +123,30 @@ Examples
 ```bash
 bazo-client funds --from myaccount.txt --to recipient.txt --txcount 0 --amount 100
 bazo-client funds --from myaccount.txt --to recipient.txt --txcount 1 --amount 100 --multisig myaccount.txt
+bazo-client funds --from myaccount.txt --toAddress b978...<120 byte omitted>...e86ba --txcount 2 --amount 100 --fee 15
+```
+
+### Data
+
+Send Data from one account to another
+```bash
+bazo-client data [command options] [arguments...]
+```
+Options
+* `--header`: (default: 0) Set header flag
+* `--fee`: (default: 1) Set transaction fee
+* `--txcount`: The sender's current transaction counter
+* `--data`: The data to be sent from the sender to the reciüient
+* `--from`: The file to load the sender's private key from
+* `--to`: The file to load the recipient's public key from
+* `--toAddress`: Instead of passing the recipient's address by file with `--to`, you can also directly pass the recipient's address with this option
+* `--multisig`: (optional) The file to load the multisig's private key from.
+
+Examples
+
+```bash
+bazo-client funds --from myaccount.txt --to recipient.txt --txcount 0 --data nil
+bazo-client funds --from myaccount.txt --to recipient.txt --txcount 1 --data 100 --multisig myaccount.txt
 bazo-client funds --from myaccount.txt --toAddress b978...<120 byte omitted>...e86ba --txcount 2 --amount 100 --fee 15
 ```
 
