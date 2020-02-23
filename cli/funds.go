@@ -275,6 +275,7 @@ func sendMassFunds(args *massFundsArgs, logger *log.Logger) error {
 	fromAddress := crypto.GetAddressFromPubKey(&fromPrivKey.PublicKey)
 	toAddress := crypto.GetAddressFromPubKey(toPubKey)
 
+	logger.Printf("Start send mass funds")
 	for i := 1; i<= args.transactions ; i++ {
 
 		tx, err := protocol.ConstrFundsTx(
@@ -300,8 +301,8 @@ func sendMassFunds(args *massFundsArgs, logger *log.Logger) error {
 				logger.Printf("Transaction successfully sent to IpPort:%s\nTxHash: %x", committee, tx.Hash())
 			}
 		}
-
 	}
+	logger.Printf("End send mass funds")
 
 	return nil
 }
