@@ -30,6 +30,7 @@ func main() {
 	app.Commands = []cli2.Command {
 		cli.GetAccountCommand(logger),
 		cli.GetFundsCommand(logger),
+		cli.GetMassFundsCommand(logger),
 		cli.GetCommitteeCommand(logger),
 		cli.GetDataCommand(logger),
 		cli.GetNetworkCommand(logger),
