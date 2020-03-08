@@ -26,7 +26,6 @@ Contents of `committees.json`:
 }
 ```
 
-In the current state of the system, the `configurations.json` file should not be necessary anymore.
 
 ## Getting Started
 
